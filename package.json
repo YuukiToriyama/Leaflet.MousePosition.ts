@@ -1,6 +1,6 @@
 {
   "name": "leaflet.mouseposition.ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This repo intends to be a modern replacement of Leaflet.MousePosition plugin ",
   "main": "dist/index.js",
   "scripts": {
