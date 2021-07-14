@@ -1,7 +1,11 @@
 import React from 'react';
 import leaflet from 'leaflet';
 
-const MousePositionBar: React.FunctionComponent<{ latlng: leaflet.LatLng }> = (props) => {
+export interface MousePositionControlProps {
+	latlng: leaflet.LatLng
+}
+
+export const MousePositionControl: React.FunctionComponent<MousePositionControlProps> = (props) => {
 	const latlng = props.latlng.wrap();
 	return (
 		<React.Fragment>
@@ -9,4 +13,3 @@ const MousePositionBar: React.FunctionComponent<{ latlng: leaflet.LatLng }> = (p
 		</React.Fragment>
 	)
 }
-export default MousePositionBar;

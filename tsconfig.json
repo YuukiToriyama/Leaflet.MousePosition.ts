@@ -2,11 +2,11 @@
     "compilerOptions": {
         "sourceMap": true,
         "baseUrl": "./",
-        "target": "es5",
+        "target": "ESNEXT",
         "strict": true,
         "outDir": "./dist",
         "declaration": true,
-        "module": "commonJs",
+        "module": "CommonJS",
         "jsx": "react",
         "lib": ["ES5", "ES6", "DOM"],
         "allowSyntheticDefaultImports": true,

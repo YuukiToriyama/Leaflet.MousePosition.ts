@@ -2,13 +2,19 @@ import leaflet from 'leaflet';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import MousePositionBar from './Control';
+import { MousePositionControl, MousePositionControlProps } from './Control';
+
+interface MousePositionProps extends leaflet.ControlOptions {
+	customComponent?: React.FunctionComponent<MousePositionControlProps>
+}
 
 export class MousePosition extends leaflet.Control {
 	_div: HTMLElement | null;
-	constructor(options?: leaflet.ControlOptions) {
+	control: React.FunctionComponent<MousePositionControlProps>;
+	constructor(options?: MousePositionProps) {
 		super(options);
 		this._div = null;
+		this.control = options?.customComponent || MousePositionControl;
 	}
 
 	onAdd = (map: leaflet.Map) => {
@@ -20,7 +26,7 @@ export class MousePosition extends leaflet.Control {
 	}
 	update = (latlng: leaflet.LatLng) => {
 		if (this._div !== null) {
-			this._div.innerHTML = ReactDOMServer.renderToString(<MousePositionBar latlng={latlng} />);
+			this._div.innerHTML = ReactDOMServer.renderToString(React.createElement(this.control, { latlng: latlng }));
 		}
 	}
 }
