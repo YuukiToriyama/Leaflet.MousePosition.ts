@@ -1,2 +1,2 @@
-export { MousePosition } from './MousePosition';
-export type { MousePositionControlProps } from './Control';
+export { MousePosition, MousePositionProps } from './MousePosition';
+export { MousePositionControl, MousePositionControlProps } from './Control';

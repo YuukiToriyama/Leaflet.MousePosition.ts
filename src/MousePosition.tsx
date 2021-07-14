@@ -4,7 +4,7 @@ import ReactDOMServer from 'react-dom/server';
 
 import { MousePositionControl, MousePositionControlProps } from './Control';
 
-interface MousePositionProps extends leaflet.ControlOptions {
+export interface MousePositionProps extends leaflet.ControlOptions {
 	customComponent?: React.FunctionComponent<MousePositionControlProps>
 }
 
