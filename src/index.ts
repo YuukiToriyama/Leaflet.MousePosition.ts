@@ -1,0 +1,1 @@
+export { MousePosition } from './MousePosition';

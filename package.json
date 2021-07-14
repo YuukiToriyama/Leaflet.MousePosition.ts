@@ -1,0 +1,34 @@
+{
+  "name": "leaflet.mouseposition.ts",
+  "version": "0.0.1",
+  "description": "This repo intends to be a modern replacement of Leaflet.MousePosition plugin ",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YUUKIToriyama/Leaflet.MousePosition.ts.git"
+  },
+  "keywords": [
+    "leaflet"
+  ],
+  "author": "YUUKIToriyama <github@toriyama.dev>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YUUKIToriyama/Leaflet.MousePosition.ts/issues"
+  },
+  "homepage": "https://github.com/YUUKIToriyama/Leaflet.MousePosition.ts#readme",
+  "dependencies": {
+    "leaflet": "^1.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.7.4",
+    "@types/react": "^17.0.14",
+    "@types/react-dom": "^17.0.9",
+    "typescript": "^4.3.5"
+  }
+}
