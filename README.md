@@ -60,3 +60,12 @@ const mousePosition = new MousePosition({
 });
 mousePosition.addTo(map);
 ```
+
+## Demo
+
+Demo page is [here](https://yuukitoriyama.github.io/Leaflet.MousePosition.ts).
+
+```typescript
+npm run build:demo
+// then, assets are to be built on ./public
+```
