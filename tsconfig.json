@@ -5,12 +5,14 @@
         "target": "ESNEXT",
         "strict": true,
         "outDir": "./dist",
-        "declaration": true,
         "module": "CommonJS",
         "jsx": "react",
         "lib": ["ES5", "ES6", "DOM"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "typeRoots": ["src/@types"]
-    }
+        "types": ["node"]
+    },
+    "exclude": [
+        "demo"
+    ]
 }
