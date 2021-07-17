@@ -48,7 +48,7 @@ mousePosition.addTo(map);
   - You can custmize how this plugin looks by writting a React component.
   - For more details, look at [`demo/index.tsx`](./demo/index.tsx) .
 - clickToCopy(optional)
-  - �Experimental�
+  - 🚧Experimental🚧
   - If `clickToCopy` is `true`, when user click somewhere on the map, the coordinate information will be copied to the user's clipboard.
   - Default value is `false`.
 
