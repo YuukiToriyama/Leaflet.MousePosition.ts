@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc --declaration",
     "build:demo": "rm -rf ./public && webpack --mode=production --config demo/webpack.config.ts",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
