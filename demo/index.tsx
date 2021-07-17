@@ -53,11 +53,6 @@ const App: React.FunctionComponent = () => {
 			position: "bottomright",
 			customComponent: customControl
 		}).addTo(map);
-		map.on({
-			mousemove: (event) => {
-				mousePositionControl.update(event.latlng);
-			}
-		})
 	}, []);
 	return (
 		<React.Fragment>

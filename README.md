@@ -15,13 +15,6 @@ const mousePosition = newMousePosition({
 	position: "topright",
 });
 mousePosition.addTo(map);
-
-map.on({
-	click: (event) => {
-		const location = event.latlng;
-		mousePosition.update(location);
-	},
-});
 ```
 
 ## Customize
