@@ -22,8 +22,12 @@ const config = {
 	}
 }
 const customControl: React.FunctionComponent<MousePositionControlProps> = (props) => {
+	const tableStyle: React.CSSProperties = {
+		fontSize: "large",
+		background: "rgba(255,255,255,0.5)"
+	}
 	return (
-		<table>
+		<table style={tableStyle}>
 			<tr>
 				<td>Latitude</td>
 				<td>{props.latlng.lat}</td>
@@ -51,7 +55,8 @@ const App: React.FunctionComponent = () => {
 		}).addTo(map);
 		mousePositionControl = new MousePosition({
 			position: "bottomright",
-			customComponent: customControl
+			customComponent: customControl,
+			clickToCopy: true
 		}).addTo(map);
 	}, []);
 	return (
