@@ -29,7 +29,7 @@ npm i leaflet.mouseposition.ts
 	</head>
 	<body>
 	</body>
-</head>
+</html>
 ```
 
 ### Basic Use
