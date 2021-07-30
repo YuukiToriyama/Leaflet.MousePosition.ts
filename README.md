@@ -12,10 +12,24 @@ Not only TS users, but also for JS users `.d.ts` file will make you happy to wri
 
 ### Installation
 
+#### With npm
+
 Compiled codes are available on [npmjs.com](https://www.npmjs.com/package/leaflet.mouseposition.ts)
 
 ```bash
 npm i leaflet.mouseposition.ts
+```
+
+#### From CDN
+
+```html
+<html>
+	<head>
+		<script src="https://unpkg.com/leaflet.mouseposition.ts/dist/bundle.js"></script>
+	</head>
+	<body>
+	</body>
+</head>
 ```
 
 ### Basic Use
