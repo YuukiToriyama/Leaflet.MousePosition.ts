@@ -22,12 +22,22 @@ npm i leaflet.mouseposition.ts
 
 #### From CDN
 
+Demo page is [here](https://yuukitoriyama.github.io/leaflet-plugins/Leaflet.MousePosition.ts/)!
+
 ```html
 <html>
 	<head>
+		<!-- please load leaflet.js and leaflet.css -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.css"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.min.js"></script>
+		<!-- after loading leaflet.js please load this library -->
 		<script src="https://unpkg.com/leaflet.mouseposition.ts/dist/bundle.js"></script>
 	</head>
 	<body>
+		<div id="myMap"></div>
 	</body>
 </html>
 ```
