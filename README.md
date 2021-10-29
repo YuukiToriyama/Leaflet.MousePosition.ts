@@ -1,5 +1,7 @@
 # Leaflet.MousePosition.ts
 
+[![npm version](https://badge.fury.io/js/leaflet.mouseposition.ts.svg)](https://badge.fury.io/js/leaflet.mouseposition.ts)
+
 Customizable coordinate viewer written in TypeScript
 
 ## Abstract
