@@ -4,6 +4,9 @@ const config: Configuration = {
 	entry: {
 		'bundle': ["./src/index.ts"]
 	},
+	externals: {
+		leaflet: "L"
+	},
 	output: {
 		filename: 'bundle.js',
 		library: {
