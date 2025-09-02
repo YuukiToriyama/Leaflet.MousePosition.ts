@@ -10,7 +10,8 @@
         "lib": ["ES5", "ES6", "DOM"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "types": ["node"]
+        "types": ["node"],
+        "skipLibCheck": true
     },
     "exclude": [
         "demo"
