@@ -8,8 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: volta-cli/action@v4
-        with:
-          node-version: '16' # バージョンが低すぎるので今後の修正でバージョンを上げる
       - run: npm install
       - name: Type check
         run: tsc --noEmit
