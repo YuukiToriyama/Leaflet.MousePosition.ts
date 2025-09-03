@@ -1,8 +1,8 @@
 import React from 'react';
-import leaflet from 'leaflet';
+import { LatLng } from 'leaflet';
 
 export interface MousePositionControlProps {
-	latlng: leaflet.LatLng
+	latlng: LatLng
 }
 
 export const MousePositionControl: React.FunctionComponent<MousePositionControlProps> = (props) => {
