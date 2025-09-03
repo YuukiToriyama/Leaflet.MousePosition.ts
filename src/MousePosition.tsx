@@ -12,7 +12,7 @@ const ControlBase: React.FunctionComponent<{ map: leaflet.Map, control: React.Fu
 		},
 		click: (event) => {
 			setCoords(event.latlng);
-			props.clickToCopy && navigator.clipboard.writeText(event.latlng.toString()).then(e => {
+			props.clickToCopy && navigator.clipboard.writeText(event.latlng.toString()).then(() => {
 				console.log("Copied to Clipboard");
 			});
 		}

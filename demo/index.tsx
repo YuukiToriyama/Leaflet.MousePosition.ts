@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { MousePosition, MousePositionControlProps } from '../src/index';
+import { MousePosition, MousePositionControlProps } from '../src';
 import Header from './Header';
 
 const config = {
