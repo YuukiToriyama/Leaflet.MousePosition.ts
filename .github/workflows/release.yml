@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: volta-cli/action@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+          always-auth: true
       - run: npm install
       - run: npm publish --provenance --access public
         env:
