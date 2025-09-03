@@ -1,16 +1,22 @@
-import leaflet from 'leaflet';
+import L, {
+    Map,
+    LatLng,
+    DomUtil,
+    LeafletMouseEvent,
+    ControlOptions,
+} from 'leaflet';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { MousePositionControl, MousePositionControlProps } from './Control';
 
-const ControlBase: React.FunctionComponent<{ map: leaflet.Map, control: React.FunctionComponent<MousePositionControlProps>, clickToCopy: boolean }> = (props) => {
-	const [coords, setCoords] = React.useState(new leaflet.LatLng(0, 0));
+const ControlBase: React.FunctionComponent<{ map: Map, control: React.FunctionComponent<MousePositionControlProps>, clickToCopy: boolean }> = (props) => {
+	const [coords, setCoords] = React.useState(new LatLng(0, 0));
 	props.map.on({
-		mousemove: (event) => {
+		mousemove: (event: LeafletMouseEvent) => {
 			setCoords(event.latlng);
 		},
-		click: (event) => {
+		click: (event: LeafletMouseEvent) => {
 			setCoords(event.latlng);
 			props.clickToCopy && navigator.clipboard.writeText(event.latlng.toString()).then(() => {
 				console.log("Copied to Clipboard");
@@ -22,12 +28,12 @@ const ControlBase: React.FunctionComponent<{ map: leaflet.Map, control: React.Fu
 	)
 }
 
-export interface MousePositionProps extends leaflet.ControlOptions {
+export interface MousePositionProps extends ControlOptions {
 	customComponent?: React.FunctionComponent<MousePositionControlProps>
 	clickToCopy?: boolean
 }
 
-export class MousePosition extends leaflet.Control {
+export class MousePosition extends L.Control {
 	_div: HTMLElement | null;
 	control: React.FunctionComponent<MousePositionControlProps>;
 	clickToCopy: boolean
@@ -38,8 +44,8 @@ export class MousePosition extends leaflet.Control {
 		this.clickToCopy = options?.clickToCopy || false;
 	}
 
-	onAdd = (map: leaflet.Map) => {
-		this._div = leaflet.DomUtil.create("div", "custom-panel leaflet-bar");
+ onAdd = (map: Map) => {
+		this._div = DomUtil.create("div", "custom-panel leaflet-bar");
 		ReactDOM.render(
 			<ControlBase map={map} control={this.control} clickToCopy={this.clickToCopy} />,
 			this._div
@@ -51,5 +57,4 @@ export class MousePosition extends leaflet.Control {
 	}
 }
 
-declare let L: any;
-L.MousePosition = MousePosition;
+(L as any).MousePosition = MousePosition;
