@@ -1,10 +1,4 @@
-import L, {
-    Map,
-    LatLng,
-    DomUtil,
-    LeafletMouseEvent,
-    ControlOptions,
-} from 'leaflet';
+import { Control, Map, LatLng, DomUtil, LeafletMouseEvent, ControlOptions } from 'leaflet';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -33,7 +27,7 @@ export interface MousePositionProps extends ControlOptions {
 	clickToCopy?: boolean
 }
 
-export class MousePosition extends L.Control {
+export class MousePosition extends Control {
 	_div: HTMLElement | null;
 	control: React.FunctionComponent<MousePositionControlProps>;
 	clickToCopy: boolean
@@ -56,5 +50,3 @@ export class MousePosition extends L.Control {
 		console.log("Bye");
 	}
 }
-
-(L as any).MousePosition = MousePosition;
