@@ -1,8 +1,8 @@
 {
   "name": "leaflet.mouseposition.ts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A plugin for Leaflet. One of the modern alternatives of Leaflet.MousePosition plugin.",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "build": "rm -rf ./dist && tsc --declaration",
     "build:web": "webpack --config webpack.config.ts",
