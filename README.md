@@ -91,7 +91,7 @@ mousePosition.addTo(map);
 
 - position
   - You can choose which corner you want to display.
-- customElement(optional)
+- customComponent(optional)
   - You can custmize how this plugin looks by writting a React component.
   - For more details, look at [`demo/index.tsx`](./demo/index.tsx) .
 - clickToCopy(optional)
@@ -112,7 +112,7 @@ import {
 	MousePositionControlProps,
 } from "leaflet.mouseposition.ts";
 
-const customElement: React.FunctionComponent<MousePositionControlProps> = (
+const customComponent: React.FunctionComponent<MousePositionControlProps> = (
 	props
 ) => {
 	return (
@@ -131,7 +131,7 @@ const customElement: React.FunctionComponent<MousePositionControlProps> = (
 
 const mousePosition = new MousePosition({
 	position: "topright",
-	customElement: customElement,
+	customComponent: customComponent,
 });
 mousePosition.addTo(map);
 ```
