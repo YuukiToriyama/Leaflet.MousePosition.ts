@@ -1,6 +1,8 @@
 # Leaflet.MousePosition.ts
 
 [![npm version](https://badge.fury.io/js/leaflet.mouseposition.ts.svg)](https://badge.fury.io/js/leaflet.mouseposition.ts)
+[![Leaflet 1.x](https://img.shields.io/badge/Leaflet-1.x-green)](https://leafletjs.com)
+[![Leaflet 2.0](https://img.shields.io/badge/Leaflet-2.0--alpha-blue)](https://leafletjs.com)
 
 Customizable coordinate viewer written in TypeScript
 
@@ -44,17 +46,36 @@ Demo page is [here](https://yuukitoriyama.github.io/leaflet-plugins/Leaflet.Mous
 </html>
 ```
 
+> **Note for CDN users**: As of v0.2.0, `L.MousePosition` global registration has been removed (see [Breaking Changes](#breaking-changes)). Please use the npm package instead.
+
 ### Basic Use
 
 First, please import a class `MousePosition`, then create an instance of this with giving some options.
 Adding it to the map, you can see new panel on your leaflet.
 
+#### Leaflet 2.0 (recommended)
+
 ```typescript
+import { Map as LeafletMap, TileLayer } from "leaflet";
 import { MousePosition } from "leaflet.mouseposition.ts";
 
-const mousePosition = new MousePosition({
-	position: "topright",
-});
+const map = new LeafletMap("myMap", { center: [35.0, 135.7], zoom: 13 });
+new TileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+const mousePosition = new MousePosition({ position: "topright" });
+mousePosition.addTo(map);
+```
+
+#### Leaflet 1.x
+
+```typescript
+import L from "leaflet";
+import { MousePosition } from "leaflet.mouseposition.ts";
+
+const map = L.map("myMap", { center: [35.0, 135.7], zoom: 13 });
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+
+const mousePosition = new MousePosition({ position: "topright" });
 mousePosition.addTo(map);
 ```
 
@@ -63,7 +84,7 @@ mousePosition.addTo(map);
 ```typescript
 {
 	position: 'topleft' | 'topright' | 'bottomleft' | 'bottomright',
-	customElement?: React.FunctionComponent<MousePositionControlProps>,
+	customComponent?: React.FunctionComponent<MousePositionControlProps>,
 	clickToCopy?: boolean
 }
 ```
@@ -114,6 +135,12 @@ const mousePosition = new MousePosition({
 });
 mousePosition.addTo(map);
 ```
+
+## Breaking Changes
+
+### v0.2.0
+
+- **`L.MousePosition` global registration removed**: The plugin no longer registers itself on the global `L` object. If you were using `new L.MousePosition()`, please migrate to the named import pattern shown above.
 
 ## Demo
 
