@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import { Map as LeafletMap, TileLayer } from 'leaflet';
 import { MousePosition, MousePositionControlProps } from '../src';
 import Header from './Header';
 
@@ -41,14 +41,14 @@ const customControl: React.FunctionComponent<MousePositionControlProps> = (props
 };
 const App: React.FunctionComponent = () => {
 	const mapRef = React.useRef<HTMLDivElement>(null);
-	let map: L.Map;
+	let map: LeafletMap;
 	let mousePositionControl: MousePosition;
 	React.useEffect(() => {
-		map = L.map(mapRef.current!, {
+		map = new LeafletMap(mapRef.current!, {
 			center: config.center,
 			zoom: config.zoom
 		});
-		L.tileLayer(config.basemap.tile, {
+		new TileLayer(config.basemap.tile, {
 			attribution: config.basemap.credit,
 			id: config.basemap.name,
 			detectRetina: true

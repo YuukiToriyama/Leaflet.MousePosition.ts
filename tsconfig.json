@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "sourceMap": true,
-        "baseUrl": "./",
         "target": "ESNEXT",
         "strict": true,
         "outDir": "./dist",

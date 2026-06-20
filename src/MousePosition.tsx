@@ -1,10 +1,4 @@
-import L, {
-    Map,
-    LatLng,
-    DomUtil,
-    LeafletMouseEvent,
-    ControlOptions,
-} from 'leaflet';
+import { Control, Map, LatLng, DomUtil, LeafletEvent, LeafletMouseEvent, ControlOptions, version } from 'leaflet';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -12,17 +6,27 @@ import { MousePositionControl, MousePositionControlProps } from './Control';
 
 const ControlBase: React.FunctionComponent<{ map: Map, control: React.FunctionComponent<MousePositionControlProps>, clickToCopy: boolean }> = (props) => {
 	const [coords, setCoords] = React.useState(new LatLng(0, 0));
-	props.map.on({
-		mousemove: (event: LeafletMouseEvent) => {
-			setCoords(event.latlng);
-		},
-		click: (event: LeafletMouseEvent) => {
-			setCoords(event.latlng);
-			props.clickToCopy && navigator.clipboard.writeText(event.latlng.toString()).then(() => {
+	React.useEffect(() => {
+		const moveEvent = version.startsWith('1.') ? 'mousemove' : 'pointermove';
+		const onMouseMove = (event: LeafletEvent) => {
+			setCoords((event as LeafletMouseEvent).latlng);
+		};
+		const onClick = (event: LeafletEvent) => {
+			const { latlng } = event as LeafletMouseEvent;
+			setCoords(latlng);
+			props.clickToCopy && navigator.clipboard?.writeText(latlng.toString()).then(() => {
 				console.log("Copied to Clipboard");
+			}).catch((err) => {
+				console.warn("Failed to copy to clipboard", err);
 			});
-		}
-	});
+		};
+		props.map.on(moveEvent, onMouseMove);
+		props.map.on('click', onClick);
+		return () => {
+			props.map.off(moveEvent, onMouseMove);
+			props.map.off('click', onClick);
+		};
+	}, [props.map, props.clickToCopy]);
 	return (
 		<props.control latlng={coords} />
 	)
@@ -33,7 +37,7 @@ export interface MousePositionProps extends ControlOptions {
 	clickToCopy?: boolean
 }
 
-export class MousePosition extends L.Control {
+export class MousePosition extends Control {
 	_div: HTMLElement | null;
 	control: React.FunctionComponent<MousePositionControlProps>;
 	clickToCopy: boolean
@@ -53,8 +57,9 @@ export class MousePosition extends L.Control {
 		return this._div;
 	}
 	onRemove = () => {
-		console.log("Bye");
+		if (this._div) {
+			ReactDOM.unmountComponentAtNode(this._div);
+			this._div = null;
+		}
 	}
 }
-
-(L as any).MousePosition = MousePosition;
