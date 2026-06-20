@@ -55,6 +55,9 @@ export class MousePosition extends Control {
 		return this._div;
 	}
 	onRemove = () => {
-		console.log("Bye");
+		if (this._div) {
+			ReactDOM.unmountComponentAtNode(this._div);
+			this._div = null;
+		}
 	}
 }
