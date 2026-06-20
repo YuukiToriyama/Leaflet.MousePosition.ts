@@ -14,8 +14,10 @@ const ControlBase: React.FunctionComponent<{ map: Map, control: React.FunctionCo
 		const onClick = (event: LeafletEvent) => {
 			const { latlng } = event as LeafletMouseEvent;
 			setCoords(latlng);
-			props.clickToCopy && navigator.clipboard.writeText(latlng.toString()).then(() => {
+			props.clickToCopy && navigator.clipboard?.writeText(latlng.toString()).then(() => {
 				console.log("Copied to Clipboard");
+			}).catch((err) => {
+				console.warn("Failed to copy to clipboard", err);
 			});
 		};
 		props.map.on(moveEvent, onMouseMove);
